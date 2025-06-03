@@ -196,7 +196,7 @@ fun rtc[S: univ, r: univ -> univ] : univ -> univ {
 	(S -> S) & *r
 }
 
-fun rtc[S: univ, r: univ -> univ] : univ -> univ {
+fun tc[S: univ, r: univ -> univ] : univ -> univ {
 	(S -> S) & *r - id[S]
 }
 
