@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<alloy>
+
+<view>
+
+<defaultnode/>
+
+<defaultedge/>
+
+<node>
+   <type name="Event"/>
+   <type name="Int"/>
+   <type name="String"/>
+   <type name="Thread"/>
+   <type name="univ"/>
+   <type name="VClock"/>
+   <type name="seq/Int"/>
+   <set name="$e" type="Event"/>
+   <set name="$init" type="VClock"/>
+</node>
+
+<edge visible="no">
+   <relation name="hb"> <type name="Event"/> <type name="Event"/> </relation>
+</edge>
+
+<edge visible="no" attribute="yes">
+   <relation name="points"> <type name="VClock"/> <type name="Thread"/> <type name="Int"/> </relation>
+   <relation name="t"> <type name="Event"/> <type name="Thread"/> </relation>
+</edge>
+
+</view>
+
+</alloy>
