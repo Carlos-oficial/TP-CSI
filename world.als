@@ -67,6 +67,10 @@ pred hbDef {
 	hb = tc[Event,So + sender]
 }
 
+pred fstIsNotRecv {
+	no ~fst.(Rcv + Send)
+}
+
 fact {
 	fstInThreadP
 	soInThread
@@ -76,23 +80,13 @@ fact {
 	noPrevFst
 	-- soAciclico -- redundante
 	Acyclic[So + sender,Event]
+	fstIsNotRecv
 }
 
 -- fim de factos
 
 -- verificacoes de redundancia
-check redudancy {
-	
-	(
-	    fstInThreadP
-	and soInThread
-	and oneSuc
-	and allSotTotal 
-	and hbDef 
-	and noPrevFst
-	and Acyclic[So + sender,Event]
-	)
-} for 6
+check redudancy { } for 6
 
 
 --- inicio de checks
@@ -113,3 +107,4 @@ check reachability {
 
 --- fim de checks
 
+run {} for 8
