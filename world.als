@@ -32,11 +32,10 @@ pred isFst [e:Event]{
 	some e.~fst
 }
 
-
 fun sot[thr:Thread] : Event->Event {
 	t.thr <: So
 }
-
+-- factos
 
 -- o primeiro evento de uma thread é evento dessa thread
 pred fstInThreadP { fst in ~t}
@@ -55,7 +54,7 @@ pred noPrevFst{
 }
 
 -- um evento não pode ter mais que um sucessor
-pred onePrev {
+pred oneSuc {
 	Injective[So,Event]
 }
 
@@ -71,16 +70,30 @@ pred hbDef {
 fact {
 	fstInThreadP
 	soInThread
-	onePrev 
+	oneSuc
 	allSotTotal 
 	hbDef 
 	noPrevFst
-	soAciclico
+	-- soAciclico -- redundante
 	Acyclic[So + sender,Event]
-	
 }
 
 -- fim de factos
+
+-- verificacoes de redundancia
+check redudancy {
+	
+	(
+	    fstInThreadP
+	and soInThread
+	and oneSuc
+	and allSotTotal 
+	and hbDef 
+	and noPrevFst
+	and Acyclic[So + sender,Event]
+	)
+} for 6
+
 
 --- inicio de checks
 
