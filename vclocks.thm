@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<alloy>
+
+<view>
+
+<defaultnode/>
+
+<defaultedge/>
+
+<node>
+   <type name="Int"/>
+   <type name="String"/>
+   <type name="univ"/>
+   <type name="seq/Int"/>
+   <type name="World/Communication"/>
+   <type name="World/Event"/>
+   <type name="World/Rcv"/>
+   <type name="World/Send"/>
+</node>
+
+<node color="Gray">
+   <type name="VClock"/>
+</node>
+
+<node color="Green">
+   <type name="World/Thread"/>
+</node>
+
+<edge layout="no" weight="2">
+   <relation name="So"> <type name="World/Event"/> <type name="World/Event"/> </relation>
+</edge>
+
+<edge layout="yes" constraint="no">
+   <relation name="event"> <type name="VClock"/> <type name="World/Event"/> </relation>
+</edge>
+
+<edge visible="no">
+   <relation name="hb"> <type name="World/Event"/> <type name="World/Event"/> </relation>
+</edge>
+
+<edge visible="no" attribute="yes">
+   <relation name="points"> <type name="VClock"/> <type name="World/Thread"/> <type name="Int"/> </relation>
+   <relation name="t"> <type name="World/Event"/> <type name="World/Thread"/> </relation>
+</edge>
+
+<edge visible="no" constraint="no">
+   <relation name="r"> <type name="VClock"/> <type name="VClock"/> </relation>
+</edge>
+
+</view>
+
+</alloy>

@@ -68,7 +68,7 @@ pred hbDef {
 }
 
 pred fstIsNotRecv {
-	no ~fst.(Rcv + Send)
+	no fst.(Rcv + Send)
 }
 
 fact {
@@ -85,11 +85,21 @@ fact {
 
 -- fim de factos
 
--- verificacoes de redundancia
+-- verificacoes de redundancia & sanity checks
+
 check redudancy { } for 6
 
 
 --- inicio de checks
+check commIsNotFst {
+	all e:Send | not isFst[e]
+}
+
+check sanityCheckFstIsNotRcv{ all e:Event| no e.So implies e not in (Send + Rcv)} for 6
+
+check recvIsFuture {
+	sender & ker[t] in  ^So
+}
 
 check initSend_ShouldFail {
   img[sender] in img[fst]
@@ -107,4 +117,4 @@ check reachability {
 
 --- fim de checks
 
-run {} for 8
+run {some sender - ker[t] } for exactly 15 Event, exactly 3 Thread
