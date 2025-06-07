@@ -91,6 +91,11 @@ check redudancy { } for 6
 
 
 --- inicio de checks
+
+check incomparable_roots {
+	no hb & (Thread.fst -> Thread.fst)
+} for 6
+
 check commIsNotFst {
 	all e:Send | not isFst[e]
 }
