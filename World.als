@@ -23,6 +23,7 @@ sig Rcv extends Communication {
 
 fact {
 	Bijection[sender,Rcv,Send]
+	--	total simples nao sobrejetiva nao injetiva
 }
 
 -- fim de assinaturas

@@ -1,0 +1,150 @@
+<alloy builddate="2022-11-09T15:06:55.234Z">
+
+<instance bitwidth="4" maxseq="4" command="Run run$1 for exactly 2 Thread, exactly 6 Event, exactly 6 VClock" filename="/home/cralos/uni/CSI/TP-CSI/vclock.als" context="Integer">
+
+<sig label="seq/Int" ID="0" parentID="1" builtin="yes">
+</sig>
+
+<sig label="Int" ID="1" parentID="2" builtin="yes">
+</sig>
+
+<sig label="String" ID="3" parentID="2" builtin="yes">
+</sig>
+
+<sig label="this/VClock" ID="4" parentID="2">
+   <atom label="VClock$0"/>
+   <atom label="VClock$1"/>
+   <atom label="VClock$2"/>
+   <atom label="VClock$3"/>
+   <atom label="VClock$4"/>
+   <atom label="VClock$5"/>
+</sig>
+
+<field label="event" ID="5" parentID="4">
+   <tuple> <atom label="VClock$0"/> <atom label="World/Send$0"/> </tuple>
+   <tuple> <atom label="VClock$1"/> <atom label="World/Event$3"/> </tuple>
+   <tuple> <atom label="VClock$2"/> <atom label="World/Event$2"/> </tuple>
+   <tuple> <atom label="VClock$3"/> <atom label="World/Event$1"/> </tuple>
+   <tuple> <atom label="VClock$4"/> <atom label="World/Event$0"/> </tuple>
+   <tuple> <atom label="VClock$5"/> <atom label="World/Rcv$0"/> </tuple>
+   <types> <type ID="4"/> <type ID="6"/> </types>
+</field>
+
+<field label="points" ID="7" parentID="4" int="yes">
+   <tuple> <atom label="VClock$0"/> <atom label="World/Thread$0"/><weight value="2"/>
+ </tuple>
+   <tuple> <atom label="VClock$1"/> <atom label="World/Thread$0"/><weight value="1"/>
+ </tuple>
+   <tuple> <atom label="VClock$2"/> <atom label="World/Thread$1"/><weight value="1"/>
+ </tuple>
+   <tuple> <atom label="VClock$3"/> <atom label="World/Thread$0"/><weight value="2"/>
+ </tuple>
+   <tuple> <atom label="VClock$3"/> <atom label="World/Thread$1"/><weight value="4"/>
+ </tuple>
+   <tuple> <atom label="VClock$4"/> <atom label="World/Thread$0"/><weight value="2"/>
+ </tuple>
+   <tuple> <atom label="VClock$4"/> <atom label="World/Thread$1"/><weight value="3"/>
+ </tuple>
+   <tuple> <atom label="VClock$5"/> <atom label="World/Thread$0"/><weight value="2"/>
+ </tuple>
+   <tuple> <atom label="VClock$5"/> <atom label="World/Thread$1"/><weight value="2"/>
+ </tuple>
+   <types> <type ID="4"/> <type ID="8"/> </types>
+</field>
+
+<field label="prev" ID="9" parentID="4">
+   <tuple> <atom label="VClock$0"/> <atom label="VClock$1"/> </tuple>
+   <tuple> <atom label="VClock$3"/> <atom label="VClock$4"/> </tuple>
+   <tuple> <atom label="VClock$4"/> <atom label="VClock$5"/> </tuple>
+   <types> <type ID="4"/> <type ID="4"/> </types>
+</field>
+
+<field label="r" ID="10" parentID="4">
+   <types> <type ID="4"/> <type ID="4"/> </types>
+</field>
+
+<field label="ord" ID="11" parentID="4">
+   <types> <type ID="4"/> <type ID="4"/> </types>
+</field>
+
+<sig label="World/Thread" ID="8" parentID="2">
+   <atom label="World/Thread$0"/>
+   <atom label="World/Thread$1"/>
+</sig>
+
+<field label="fst" ID="12" parentID="8">
+   <tuple> <atom label="World/Thread$0"/> <atom label="World/Event$3"/> </tuple>
+   <tuple> <atom label="World/Thread$1"/> <atom label="World/Event$2"/> </tuple>
+   <types> <type ID="8"/> <type ID="6"/> </types>
+</field>
+
+<sig label="World/Send" ID="13" parentID="14">
+   <atom label="World/Send$0"/>
+</sig>
+
+<sig label="World/Rcv" ID="15" parentID="14">
+   <atom label="World/Rcv$0"/>
+</sig>
+
+<field label="sender" ID="16" parentID="15">
+   <tuple> <atom label="World/Rcv$0"/> <atom label="World/Send$0"/> </tuple>
+   <types> <type ID="15"/> <type ID="13"/> </types>
+</field>
+
+<sig label="World/Communication" ID="14" parentID="6" abstract="yes">
+</sig>
+
+<sig label="World/Event" ID="6" parentID="2">
+   <atom label="World/Event$0"/>
+   <atom label="World/Event$1"/>
+   <atom label="World/Event$2"/>
+   <atom label="World/Event$3"/>
+</sig>
+
+<field label="t" ID="17" parentID="6">
+   <tuple> <atom label="World/Rcv$0"/> <atom label="World/Thread$1"/> </tuple>
+   <tuple> <atom label="World/Event$0"/> <atom label="World/Thread$1"/> </tuple>
+   <tuple> <atom label="World/Event$1"/> <atom label="World/Thread$1"/> </tuple>
+   <tuple> <atom label="World/Event$2"/> <atom label="World/Thread$1"/> </tuple>
+   <tuple> <atom label="World/Send$0"/> <atom label="World/Thread$0"/> </tuple>
+   <tuple> <atom label="World/Event$3"/> <atom label="World/Thread$0"/> </tuple>
+   <types> <type ID="6"/> <type ID="8"/> </types>
+</field>
+
+<field label="So" ID="18" parentID="6">
+   <tuple> <atom label="World/Rcv$0"/> <atom label="World/Event$2"/> </tuple>
+   <tuple> <atom label="World/Event$0"/> <atom label="World/Rcv$0"/> </tuple>
+   <tuple> <atom label="World/Event$1"/> <atom label="World/Event$0"/> </tuple>
+   <tuple> <atom label="World/Send$0"/> <atom label="World/Event$3"/> </tuple>
+   <types> <type ID="6"/> <type ID="6"/> </types>
+</field>
+
+<field label="hb" ID="19" parentID="6">
+   <tuple> <atom label="World/Rcv$0"/> <atom label="World/Event$2"/> </tuple>
+   <tuple> <atom label="World/Rcv$0"/> <atom label="World/Send$0"/> </tuple>
+   <tuple> <atom label="World/Rcv$0"/> <atom label="World/Event$3"/> </tuple>
+   <tuple> <atom label="World/Event$0"/> <atom label="World/Rcv$0"/> </tuple>
+   <tuple> <atom label="World/Event$0"/> <atom label="World/Event$2"/> </tuple>
+   <tuple> <atom label="World/Event$0"/> <atom label="World/Send$0"/> </tuple>
+   <tuple> <atom label="World/Event$0"/> <atom label="World/Event$3"/> </tuple>
+   <tuple> <atom label="World/Event$1"/> <atom label="World/Rcv$0"/> </tuple>
+   <tuple> <atom label="World/Event$1"/> <atom label="World/Event$0"/> </tuple>
+   <tuple> <atom label="World/Event$1"/> <atom label="World/Event$2"/> </tuple>
+   <tuple> <atom label="World/Event$1"/> <atom label="World/Send$0"/> </tuple>
+   <tuple> <atom label="World/Event$1"/> <atom label="World/Event$3"/> </tuple>
+   <tuple> <atom label="World/Send$0"/> <atom label="World/Event$3"/> </tuple>
+   <types> <type ID="6"/> <type ID="6"/> </types>
+</field>
+
+<sig label="univ" ID="2" builtin="yes">
+</sig>
+
+</instance>
+
+<source filename="/home/cralos/uni/CSI/TP-CSI/vclock.als" content="module VecClocks&#x000a;&#x000a;open RelCalc &#x000a;open World&#x000a;&#x000a;sig VClock {&#x000a;&#x0009;event : one Event,&#x000a;&#x0009;int points : set Thread,&#x000a;&#x0009;prev: set VClock,&#x000a;&#x0009;r: set VClock,&#x000a;&#x000a;&#x0009;ord: set VClock&#x000a;&#x000a;}&#x000a;&#x000a;fact event_clock_bijection {&#x000a;&#x0009;Bijection[event, VClock, Event]&#x000a;}&#x000a;&#x000a;pred initial [r:VClock]{&#x000a;&#x0009;r ; points :&gt; (Thread - r.event.t) = 0 ** (Thread - r.event.t)&#x000a;&#x0009;r ; points :&gt; (r.event.t)          = 1 ** (r.event.t)&#x000a;}&#x000a;&#x000a;pred isPrev[c1 : VClock, c2 : VClock] &#x000a;{&#x0009;&#x000a;&#x0009;c1.event.t = c2.event.t&#x000a;&#x0009;c1 ; points = c2 ; points fun/add (c1.event.t.fst.~event) ; points&#x000a;}&#x000a;&#x000a;pred fst_is_init {&#x000a;&#x0009;all c : event.(Thread.fst) | initial[c]&#x000a;}&#x000a;&#x000a;pred points_entire {&#x000a;&#x0009;id[Thread] in ~points ; points&#x000a;}&#x000a;&#x000a;&#x000a;&#x000a;pred isJoin[ c1, c2, r: VClock] {&#x000a;&#x0009;r ; points = (c1 ; points + c2 ; points) fun/add (r.event.t.fst.~event) ; points&#x000a;}&#x000a;&#x000a;fact &#x000a;{&#x000a;&#x0009;points_entire &#x000a;&#x0009;fst_is_init&#x000a;&#x0009;&#x000a;&#x0009;prev = event.((Event - Rcv) &lt;: So).~event&#x000a;&#x0009;prev in {c1,c2 : VClock | isPrev [c1,c2]} &#x000a;&#x000a;&#x0009;all e:Rcv | isJoin[e.sender.~event, e.So.~event, e.~event]&#x000a;}&#x000a;&#x000a;&#x000a;run {some sender - ker[t] } for exactly 2 Thread, exactly 6 Event,exactly 6 VClock&#x000a;&#x000a;fact ord_def {&#x000a;&#x0009;ord = {c1,c2 : VClock | c1 &lt; c2 }&#x000a;}&#x000a;&#x000a;check clock_hb_galois_conection {&#x000a;&#x0009;ord in event.hb.~event&#x000a;} for 5&#x000a;"/>
+
+<source filename="/home/cralos/uni/CSI/TP-CSI/RelCalc.als" content="module RelCalc&#x000a;/*&#x000a; * Authors:  &#x000a; * &#x0009;Miguel Ferreira&#x0009;&lt;pg10961@alunos.uminho.pt&gt;&#x000a; * &#x0009;Samuel Silva   &#x0009;&lt;pg11034@alunos.uminho.pt&gt;&#x000a; * Description: &#x000a; *&#x0009;&#x0009;This library was developed in the context of the&#x000a; *&#x0009;&#x0009;FMSE (Formal Methods and Software Engineering)&#x000a; *&#x0009;&#x0009;classes, see eg. www.di.uminho.pt/~jno/html/mfes-0708.html&#x000a; * Conventions:&#x000a; * &#x0009;- All relations begin with capital letters&#x000a; * &#x0009;- All functions begin with lowercase letters&#x000a; */&#x000a;&#x000a;/***********************************************/&#x000a;&#x000a;fun bottom : univ-&gt;univ {&#x000a;&#x0009;univ-&gt;univ - univ-&gt;univ&#x000a;}&#x000a;&#x000a;/**Id Definition*/&#x000a;fun id[S: univ] : univ -&gt; univ {&#x000a;&#x0009;(S -&gt; S) &amp; iden&#x000a;}&#x000a;&#x000a;/**Kernel Definition*/&#x000a;fun ker [R : univ -&gt; univ] : univ -&gt; univ {&#x000a;&#x0009;R . (~R)&#x000a;}&#x000a;&#x000a;/**Image Definition*/&#x000a;fun img [R : univ -&gt; univ] : univ -&gt; univ {&#x000a;&#x0009;(~R) . R&#x000a;}&#x000a;&#x000a;/**Domain Definition*/&#x000a;fun dom [R: univ-&gt;univ] : set (R.univ) { &#x000a;&#x0009;R.univ&#x000a;}&#x000a;&#x000a;/**Domain as coreflexive */&#x000a;fun delta [R : univ -&gt; univ] : univ -&gt; univ {&#x000a;&#x0009;ker[R] &amp; iden&#x000a;}&#x000a;&#x000a;/**Range Definition*/&#x000a;fun rng [R: univ-&gt;univ] : set (univ.R) { &#x000a;&#x0009;univ.R&#x000a;}&#x000a;&#x000a;/**Range as coreflexive */&#x000a;fun rho [R : univ -&gt; univ] : univ -&gt; univ {&#x000a;&#x0009;img[R] &amp; iden&#x000a;}&#x000a;&#x000a;/***********************************************/&#x000a;&#x000a;/**Reflexive Definition*/&#x000a;pred Reflexive [R : univ -&gt; univ, S: set univ] {&#x000a;&#x0009;id[S] in R&#x000a;--&#x0009;S &lt;: iden in R&#x000a;}&#x000a;&#x000a;/**Correflexive Definition*/&#x000a;pred Coreflexive [R : univ -&gt; univ, S: set univ] {&#x000a;&#x0009;R in id[S]&#x000a;--&#x0009;S &lt;: R in iden&#x000a;}&#x000a;&#x000a;/**Five Relations*/&#x000a;pred Symmetric [R : univ -&gt; univ] {&#x000a;&#x0009;R in ~R&#x000a;}&#x000a;pred Transitive [R : univ -&gt; univ] {&#x000a;&#x0009;R.R in R&#x000a;}&#x000a;pred Cotransitive [R: univ -&gt; univ] {&#x000a;&#x0009;R in R.R&#x000a;}&#x000a;pred Antisymmetric [R: univ -&gt; univ, S: univ] {&#x000a;&#x0009;R &amp; ~R in id[S]&#x000a;}&#x000a;&#x000a;/**Four Relations*/&#x000a;pred Per [R: univ -&gt; univ] {&#x000a;&#x0009;Symmetric[R]&#x000a;&#x0009;Transitive[R]&#x000a;&#x0009;Cotransitive[R]&#x000a;}&#x000a;pred Preorder [R: univ -&gt; univ, S: set univ] {&#x000a;&#x0009;Transitive[R]&#x000a;&#x0009;Reflexive[R,S]&#x000a;}&#x000a;pred Equivalence [R: univ -&gt; univ, S: set univ] {&#x000a;&#x0009;Per[R]&#x000a;&#x0009;Preorder[R,S]&#x000a;}&#x000a;pred Partialorder [R: univ -&gt; univ, S: set univ] {&#x000a;&#x0009;Preorder[R,S]&#x000a;&#x0009;Antisymmetric[R,S]&#x000a;}&#x000a;&#x000a;/**Two Relations*/&#x000a;pred Id [R: univ -&gt; univ, S: set univ] {&#x000a;&#x0009;Coreflexive[R,S]&#x000a;&#x0009;Equivalence[R,S]&#x000a;&#x0009;Partialorder[R,S]&#x000a;}&#x000a;pred Linearorder [R: univ -&gt; univ, S: set univ] {&#x000a;&#x0009;Partialorder[R,S]&#x000a;&#x0009;Connected[R,S]&#x000a;}&#x000a;pred Connected [R : univ -&gt; univ, S: set univ] {&#x000a;&#x0009;(R + ~R) = (S -&gt; S)&#x000a;}&#x000a;&#x000a;/** Four Relations */&#x000a;pred Simple [R: univ -&gt; univ, S: set univ] {&#x000a;--&#x0009;img[R] in id[S]}&#x000a;&#x0009;Coreflexive[img[R],S]}&#x000a;pred Entire [R: univ -&gt; univ, S: set univ] {&#x000a;--&#x0009;id[S] in ker[R]}&#x000a;&#x0009;Reflexive[ker[R],S]}&#x000a;pred Surjective [R: univ -&gt; univ, S: set univ] {&#x000a;&#x0009;id[S] in img[R]&#x000a;--&#x0009;Reflexive[img[R],S]&#x000a;}&#x000a;pred Injective [R: univ -&gt; univ, S: set univ] {&#x000a;--&#x0009;ker[R] in id[S]}&#x000a;&#x0009;Coreflexive[ker[R],S]}&#x000a;&#x000a;/** Four Relations */&#x000a;pred Function [R: univ -&gt; univ, A,B: set univ] {&#x000a;&#x0009;Simple[R,B]&#x000a;&#x0009;Entire[R,A]&#x000a;}&#x000a;pred Representation [R: univ -&gt; univ, A: set univ] {&#x000a;&#x0009;Injective[R,A]&#x000a;&#x0009;Entire[R,A]&#x000a;}&#x000a;pred Abstraction [R: univ -&gt; univ, B: set univ] {&#x000a;&#x0009;Simple[R,B]&#x000a;&#x0009;Surjective[R,B]&#x000a;}&#x000a;pred Bijection [R: univ -&gt; univ, A, B: set univ] {&#x000a;&#x0009;Representation[R,A]&#x000a;&#x0009;Abstraction[R,B]&#x000a;}&#x000a;&#x000a;/***********************************************/&#x000a;&#x000a;/** More Relations */&#x000a;pred Assymetric [R: univ -&gt; univ] {&#x000a;&#x0009;~R not in R&#x000a;}&#x000a;pred Acyclic [R: univ -&gt; univ, S: set univ] {&#x000a;&#x0009;no ^R &amp; id[S]&#x000a;}&#x000a;&#x000a;pred Irreflexive [R: univ-&gt;univ] {&#x000a;&#x0009;no R &amp; iden&#x000a;}&#x000a;&#x000a;/***********************************************/&#x000a;&#x000a;/** Galois Conections */&#x000a;/*pred Galois [A,B: univ, f: A-&gt;B, g: B -&gt; A] {&#x000a;&#x0009;Function[f]&#x000a;&#x0009;Function[g]&#x000a;&#x0009;f[A] in B &lt;=&gt; A in g[B]&#x000a;--&#x0009;f[Dom[f]] in Dom[g] &lt;=&gt; Dom[f] in g[Dom[g]]&#x000a;--&#x0009;A in (f.g)[A]&#x000a;--&#x0009;(g.f)[B] in B&#x000a;}&#x000a;*/&#x000a;/***********************************************/&#x000a;&#x000a;/**Utilities*/&#x000a;fun converse [R: univ -&gt; univ] : univ -&gt; univ { ~R}&#x000a;--fun dot [f,g: univ -&gt; univ] : univ -&gt; univ {g.f}&#x000a;&#x000a;fun oplus[R,S: univ -&gt; univ] : univ -&gt; univ&#x000a;{&#x000a;--  S + (R - (dom[S] &lt;: R))&#x000a;    S + (univ - dom[S]) &lt;: R&#x000a;}&#x000a;&#x000a;fun flip[R:univ -&gt; univ -&gt; univ]: univ -&gt; univ -&gt; univ {&#x000a;   { b: univ, a: univ, c: univ | c in b.(a.R) }&#x000a;}&#x000a;&#x000a;/***********************************************/&#x000a;&#x000a;/**reflexive and transitive closure*/&#x000a;fun rtc[S: univ, r: univ -&gt; univ] : univ -&gt; univ {&#x000a;&#x0009;(S -&gt; S) &amp; *r&#x000a;}&#x000a;&#x000a;fun tc[S: univ, r: univ -&gt; univ] : univ -&gt; univ {&#x000a;&#x0009;(S -&gt; S) &amp; *r - id[S]&#x000a;}&#x000a;&#x000a;run {} &#x000a;&#x000a;"/>
+
+<source filename="/home/cralos/uni/CSI/TP-CSI/World.als" content="module World&#x000a;open RelCalc as r&#x000a;&#x000a;-- inicio de assinaturas&#x000a;&#x000a;sig Thread {&#x000a;&#x0009;fst: one Event,&#x000a;}&#x000a;&#x000a;sig Event {&#x000a;&#x0009;t: one Thread,&#x000a;&#x0009;So: lone Event,&#x000a;&#x0009;hb: set Event,&#x000a;}&#x000a;&#x000a;abstract sig Communication extends Event {}&#x000a;&#x000a;sig Send extends Communication {}&#x000a;&#x000a;sig Rcv extends Communication {&#x000a;&#x0009;sender: one Send&#x000a;}&#x000a;&#x000a;fact {&#x000a;&#x0009;Bijection[sender,Rcv,Send]&#x000a;&#x0009;--&#x0009;total simples nao sobrejetiva nao injetiva&#x000a;}&#x000a;&#x000a;-- fim de assinaturas&#x000a;&#x000a;-- utilidades&#x000a;pred isFst [e:Event]{&#x000a;&#x0009;some e.~fst&#x000a;}&#x000a;&#x000a;fun sot[thr:Thread] : Event-&gt;Event {&#x000a;&#x0009;t.thr &lt;: So&#x000a;}&#x000a;-- factos&#x000a;&#x000a;-- o primeiro evento de uma thread &#x00e9; evento dessa thread&#x000a;pred fstInThreadP { fst in ~t}&#x000a;&#x000a;-- eventos relacionados por So est&#x00e3;o na mesma thread&#x000a;pred soInThread { So in ker[t] }&#x000a;&#x000a;-- a So b_1 and ... b_m So b_m+1 ... and b_n So c then not c So a&#x0009;&#x000a;pred soAciclico {&#x000a;&#x0009;Acyclic[So, Event]&#x000a;}&#x000a;&#x000a;-- o primeiro evento de uma thread n&#x00e3;o tem predecessor&#x000a;pred noPrevFst{&#x000a;&#x0009;no fst.So&#x000a;}&#x000a;&#x000a;-- um evento n&#x00e3;o pode ter mais que um sucessor&#x000a;pred oneSuc {&#x000a;&#x0009;Injective[So,Event]&#x000a;}&#x000a;&#x000a;-- para todas as threads, o feixo transitivo de sua session order &#x00e9; uma ordem linear estrita&#x000a;pred allSotTotal {&#x000a;&#x0009;all thr : Thread | Linearorder[^(sot[thr] + thr.fst-&gt;thr.fst) + id[t.thr], t.thr]&#x000a;}&#x000a;&#x000a;pred hbDef {&#x000a;&#x0009;hb = tc[Event,So + sender]&#x000a;}&#x000a;&#x000a;pred fstIsNotRecv {&#x000a;&#x0009;no fst.(Rcv + Send)&#x000a;}&#x000a;&#x000a;fact {&#x000a;&#x0009;fstInThreadP&#x000a;&#x0009;soInThread&#x000a;&#x0009;oneSuc&#x000a;&#x0009;allSotTotal &#x000a;&#x0009;hbDef &#x000a;&#x0009;noPrevFst&#x000a;&#x0009;-- soAciclico -- redundante&#x000a;&#x0009;Acyclic[So + sender,Event]&#x000a;&#x0009;fstIsNotRecv&#x000a;}&#x000a;&#x000a;-- fim de factos&#x000a;&#x000a;-- verificacoes de redundancia &amp; sanity checks&#x000a;&#x000a;check redudancy { } for 6&#x000a;&#x000a;&#x000a;--- inicio de checks&#x000a;&#x000a;check incomparable_roots {&#x000a;&#x0009;no hb &amp; (Thread.fst -&gt; Thread.fst)&#x000a;} for 6&#x000a;&#x000a;check commIsNotFst {&#x000a;&#x0009;all e:Send | not isFst[e]&#x000a;}&#x000a;&#x000a;check sanityCheckFstIsNotRcv{ all e:Event| no e.So implies e not in (Send + Rcv)} for 6&#x000a;&#x000a;check recvIsFuture {&#x000a;&#x0009;sender &amp; ker[t] in  ^So&#x000a;}&#x000a;&#x000a;check initSend_ShouldFail {&#x000a;  img[sender] in img[fst]&#x000a;} for 6&#x000a;&#x000a;check recvIsLast_ShouldFail  {&#x000a;&#x0009;all e:Event | ((some e.sender and  e.sender.t != e.t ) implies no So.e or some e.sender.~fst)&#x000a;} for 6&#x000a;&#x000a;check reachability {&#x000a;&#x0009;all thr : Thread |&#x000a;&#x0009;&#x0009;t.thr &lt;: iden &amp; Event-&gt;Event &#x000a;&#x0009;&#x0009;&#x0009;in (*(sot[thr]) + *(~(sot[thr])))&#x000a;}&#x000a;&#x000a;--- fim de checks&#x000a;&#x000a;run {some sender - ker[t] } for exactly 15 Event, exactly 3 Thread&#x000a;"/>
+
+</alloy>

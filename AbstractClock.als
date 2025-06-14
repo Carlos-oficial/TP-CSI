@@ -5,7 +5,9 @@ open World
 
 sig Clock{
 	e: Event,
-	ord: set Clock
+	ord: set Clock,
+
+	repr: univ
 }
 
 fact {
@@ -14,6 +16,12 @@ fact {
 
 fact {
 	ord.e in e.hb
+}
+
+{ 
+	-- initial events are incomparable
+	-- session order in clock order
+	-- only sends exchenge causal context
 }
 
 run {}
