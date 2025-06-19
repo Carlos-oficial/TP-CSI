@@ -1,4 +1,4 @@
-module World
+	module World
 open RelCalc as r
 
 -- inicio de assinaturas
@@ -22,8 +22,7 @@ sig Rcv extends Communication {
 }
 
 fact {
-	Bijection[sender,Rcv,Send]
-	--	total simples nao sobrejetiva nao injetiva
+	Function[sender,Rcv,Send]
 }
 
 -- fim de assinaturas
@@ -123,4 +122,4 @@ check reachability {
 
 --- fim de checks
 
-run {some sender - ker[t] } for exactly 15 Event, exactly 3 Thread
+run {some sender - ker[t] } for exactly 6 Event, exactly 2 Thread
