@@ -36,8 +36,6 @@ pred points_entire {
 	id[Thread] in ~points ; points
 }
 
-
-
 pred isJoin[ c1, c2, r: VClock] {
 	r ; points = (c1 ; points + c2 ; points) fun/add (r.event.t.fst.~event) ; points
 }
@@ -47,8 +45,10 @@ fact
 	points_entire 
 	fst_is_init
 	
-	prev = event.((Event - Rcv) <: So).~event
-	prev in {c1,c2 : VClock | isPrev [c1,c2]} 
+	event.((Event - Rcv) <: So).~event = {c1,c2 : VClock | isPrev [c1,c2]}
+
+	-- prev = event.((Event - Rcv) <: So).~event 
+	prev = {c1,c2 : VClock | isPrev [c1,c2]}
 
 	all e:Rcv | isJoin[e.sender.~event, e.So.~event, e.~event]
 }
@@ -57,9 +57,9 @@ fact
 run {some sender - ker[t] } for exactly 2 Thread, exactly 6 Event,exactly 6 VClock
 
 fact ord_def {
-	ord = {c1,c2 : VClock | c1 < c2 }
+	ord = {c1,c2 : VClock | c1 ; points < c2 ; points }
 }
 
 check clock_hb_galois_conection {
-	ord in event.hb.~event
+	~ord = event.hb.~event
 } for 5

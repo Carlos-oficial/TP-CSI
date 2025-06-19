@@ -1,4 +1,4 @@
-	module World
+module World
 open RelCalc as r
 
 -- inicio de assinaturas
@@ -21,9 +21,9 @@ sig Rcv extends Communication {
 	sender: one Send
 }
 
-fact {
+check {
 	Function[sender,Rcv,Send]
-}
+} for 4
 
 -- fim de assinaturas
 
@@ -68,7 +68,7 @@ pred hbDef {
 }
 
 pred fstIsNotRecv {
-	no fst.(Rcv + Send)
+	no fst.Rcv
 }
 
 fact {
