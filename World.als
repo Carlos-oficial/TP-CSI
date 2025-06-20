@@ -71,6 +71,10 @@ pred fstIsNotRecv {
 	no fst.Rcv
 }
 
+pred correctBroadCast {
+	no ker[sender] & ker[t]
+}
+
 fact {
 	fstInThreadP
 	soInThread
@@ -78,7 +82,7 @@ fact {
 	allSotTotal 
 	hbDef 
 	noPrevFst
-	-- soAciclico -- redundante
+	correctBroadCast	
 	Acyclic[So + sender,Event]
 	fstIsNotRecv
 }
@@ -89,6 +93,9 @@ fact {
 
 check redudancy { } for 6
 
+check no_bcast_so_same_thread {
+  all disj r1,r2 : Rcv | some r1.sender & r2.sender implies r1.t != r2.t
+}
 
 --- inicio de checks
 
