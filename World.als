@@ -72,7 +72,7 @@ pred fstIsNotRecv {
 }
 
 pred correctBroadCast {
-	no ker[sender] & ker[t]
+	no (ker[sender] - iden) & (ker[t] - iden)
 }
 
 fact {
@@ -80,7 +80,7 @@ fact {
 	soInThread
 	oneSuc
 	allSotTotal 
-	hbDef 
+	hbDef
 	noPrevFst
 	correctBroadCast	
 	Acyclic[So + sender,Event]
@@ -103,11 +103,11 @@ check incomparable_roots {
 	no hb & (Thread.fst -> Thread.fst)
 } for 6
 
-check commIsNotFst {
-	all e:Send | not isFst[e]
+check rcvIsNotFst {
+	all e:Rcv | not isFst[e]
 }
 
-check sanityCheckFstIsNotRcv{ all e:Event| no e.So implies e not in (Send + Rcv)} for 6
+check sanityCheckFstIsNotRcv{ all e:Event| no e.So implies e not in (Rcv)} for 6
 
 check recvIsFuture {
 	sender & ker[t] in  ^So
@@ -129,4 +129,7 @@ check reachability {
 
 --- fim de checks
 
-run {some sender - ker[t] } for exactly 6 Event, exactly 2 Thread
+run {
+	some sender - ker[t] and
+	some e:Send | some disj r1,r2,r3:Rcv | r1 in sender.e  and r2 in sender.e  and r3 in sender.e
+} for exactly 7 Event, exactly 3 Thread

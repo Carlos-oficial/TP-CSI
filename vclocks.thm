@@ -36,10 +36,11 @@
 
 <edge visible="no">
    <relation name="hb"> <type name="World/Event"/> <type name="World/Event"/> </relation>
+   <relation name="ord"> <type name="VClock"/> <type name="VClock"/> </relation>
 </edge>
 
 <edge visible="no" attribute="yes">
-   <relation name="points"> <type name="VClock"/> <type name="World/Thread"/> <type name="Int"/> </relation>
+   <relation name="points"> <type name="VClock"/> <type name="World/Thread"/> </relation>
    <relation name="t"> <type name="World/Event"/> <type name="World/Thread"/> </relation>
 </edge>
 

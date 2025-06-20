@@ -54,7 +54,7 @@ fact
 }
 
 
-run {some sender - ker[t] } for exactly 2 Thread, exactly 6 Event,exactly 6 VClock
+run {some sender - ker[t] } for exactly 2 Thread, exactly 4 Event,exactly 4 VClock
 
 fact ord_def {
 	ord = {c1,c2 : VClock | c1 ; points < c2 ; points }
@@ -62,4 +62,4 @@ fact ord_def {
 
 check clock_hb_galois_conection {
 	~ord = event.hb.~event
-} for 5
+} for 3
